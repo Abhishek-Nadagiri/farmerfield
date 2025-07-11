@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { TrendingUp, TrendingDown, DollarSign, RefreshCw } from 'lucide-react';
+import { TrendingUp, TrendingDown, IndianRupee, RefreshCw } from 'lucide-react';
 
 interface CropPrice {
   name: string;
@@ -28,59 +28,59 @@ export const CropPriceCards = () => {
   const fetchPrices = async () => {
     setLoading(true);
     
-    // Simulate API call with realistic price data
+    // Simulate API call with realistic price data in INR
     setTimeout(() => {
       const mockPrices: CropPrice[] = [
         {
           name: 'Wheat',
-          currentPrice: 285,
-          previousPrice: 280,
-          unit: '$/ton',
-          market: 'CBOT',
+          currentPrice: 23500,
+          previousPrice: 23200,
+          unit: '₹/ton',
+          market: 'APMC',
           icon: '🌾',
           demand: 'High'
         },
         {
           name: 'Rice',
-          currentPrice: 420,
-          previousPrice: 435,
-          unit: '$/ton',
+          currentPrice: 34500,
+          previousPrice: 35800,
+          unit: '₹/ton',
           market: 'Local',
           icon: '🌾',
           demand: 'Medium'
         },
         {
           name: 'Corn',
-          currentPrice: 240,
-          previousPrice: 238,
-          unit: '$/ton',
-          market: 'CBOT',
+          currentPrice: 19800,
+          previousPrice: 19600,
+          unit: '₹/ton',
+          market: 'APMC',
           icon: '🌽',
           demand: 'High'
         },
         {
           name: 'Soybeans',
-          currentPrice: 520,
-          previousPrice: 515,
-          unit: '$/ton',
-          market: 'CBOT',
+          currentPrice: 42800,
+          previousPrice: 42400,
+          unit: '₹/ton',
+          market: 'APMC',
           icon: '🫘',
           demand: 'Medium'
         },
         {
           name: 'Tomatoes',
-          currentPrice: 1200,
-          previousPrice: 1250,
-          unit: '$/ton',
+          currentPrice: 98800,
+          previousPrice: 103000,
+          unit: '₹/ton',
           market: 'Local',
           icon: '🍅',
           demand: 'High'
         },
         {
           name: 'Potatoes',
-          currentPrice: 380,
-          previousPrice: 375,
-          unit: '$/ton',
+          currentPrice: 31300,
+          previousPrice: 30900,
+          unit: '₹/ton',
           market: 'Local',
           icon: '🥔',
           demand: 'Medium'
@@ -117,7 +117,7 @@ export const CropPriceCards = () => {
       <Card className="w-full">
         <CardHeader>
           <CardTitle className="flex items-center">
-            <DollarSign className="w-6 h-6 mr-2 text-green-600" />
+            <IndianRupee className="w-6 h-6 mr-2 text-green-600" />
             Loading Market Prices...
           </CardTitle>
         </CardHeader>
@@ -137,7 +137,7 @@ export const CropPriceCards = () => {
       <CardHeader className="bg-gradient-to-r from-green-500 to-blue-500 text-white">
         <CardTitle className="flex items-center justify-between">
           <div className="flex items-center">
-            <DollarSign className="w-6 h-6 mr-2" />
+            <IndianRupee className="w-6 h-6 mr-2" />
             Live Market Prices
           </div>
           <div className="flex items-center space-x-2 text-sm">
@@ -167,7 +167,7 @@ export const CropPriceCards = () => {
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <span className="text-2xl font-bold text-gray-800">
-                      ${crop.currentPrice}
+                      ₹{crop.currentPrice.toLocaleString('en-IN')}
                     </span>
                     <div className={`flex items-center space-x-1 ${isPositive ? 'text-green-600' : 'text-red-600'}`}>
                       {isPositive ? (
@@ -184,7 +184,7 @@ export const CropPriceCards = () => {
                   <div className="text-sm text-gray-600">
                     <p>Per {crop.unit.split('/')[1]} • {crop.market}</p>
                     <p className="text-xs text-gray-500 mt-1">
-                      Previous: ${crop.previousPrice}
+                      Previous: ₹{crop.previousPrice.toLocaleString('en-IN')}
                     </p>
                   </div>
                 </div>
@@ -196,7 +196,7 @@ export const CropPriceCards = () => {
         <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
           <h4 className="font-medium text-blue-800 mb-2">💡 Market Insights</h4>
           <p className="text-blue-700 text-sm">
-            Prices are updated in real-time from major commodity exchanges. 
+            Prices are updated in real-time from major commodity exchanges and APMCs. 
             Consider market trends when planning your crop selection and timing your sales.
           </p>
         </div>
