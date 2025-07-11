@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -133,7 +132,7 @@ export const CropRecommendations: React.FC<CropRecommendationsProps> = ({ soilDa
           reasons.push('Favorable weather conditions');
         }
 
-        const suitability = score >= 8 ? 'High' : score >= 6 ? 'Medium' : 'Low';
+        const suitability: 'High' | 'Medium' | 'Low' = score >= 8 ? 'High' : score >= 6 ? 'Medium' : 'Low';
 
         return {
           name: crop.name,
